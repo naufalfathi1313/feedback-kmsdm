@@ -64,7 +64,13 @@
     border-radius: 12px; overflow: hidden; background: var(--hitam);
     display: grid; place-items: center; color: var(--krem); text-align: center; font-size: 14px;
   }
+  .video-box { position: relative; }
   .video-box video { width: 100%; height: 100%; object-fit: cover; }
+  .putar {
+    position: absolute; inset: 0; margin: auto; width: 76px; height: 76px; border-radius: 50%;
+    border: 2px solid var(--hitam); background: var(--oranye); color: #fff; font-size: 30px;
+    padding-left: 6px; cursor: pointer; box-shadow: 3px 3px 0 var(--hitam);
+  }
 
   .btn {
     display: block; text-align: center; text-decoration: none;
@@ -141,9 +147,9 @@
   <section class="card">
     <h2><span class="no">3</span>Lihat contoh videonya</h2>
     <div class="video-box" id="videoBox">
-      <!-- GANTI src DENGAN FILE / LINK CONTOH VIDEO -->
-      <video src="contoh-video.mp4" controls playsinline preload="metadata"
-             onerror="this.parentNode.textContent='Contoh video segera hadir'"></video>
+      <video id="contoh" src="contoh-video.mp4" poster="contoh-poster.jpg" playsinline preload="none"
+             onplay="document.getElementById('putar').hidden=true; this.controls=true"></video>
+      <button id="putar" class="putar" onclick="document.getElementById('contoh').play()">▶</button>
     </div>
   </section>
 
